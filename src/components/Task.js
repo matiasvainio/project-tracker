@@ -1,27 +1,21 @@
 import React, { useState } from 'react';
 import './task.css';
+import obi from '../res/hello-there-obi-wan.gif';
 
-const Task = ({ tasks }) => {
+const Task = ({ props }) => {
   const [options, setOptions] = useState(0);
 
-  const handleItemClick = (x) => {
-    setOptions(x.id);
-    console.log('asd');
+  const handleClick = (id) => {
+    options === 0 ? setOptions(id) : setOptions(0);
   };
 
-  const tasksAsList = tasks.map((x) => {
-    return (
-      <li key={x.id} onClick={() => handleItemClick(x)}>
-        {x.name}
-        <br />
-        {x.startDate}
-        <br />
-        {options === x.id ? <TaskOptions task={x} /> : ''}
-      </li>
-    );
-  });
-
-  return <div>{tasksAsList}</div>;
+  return (
+    <div>
+      <a onClick={() => handleClick(props.id)}>{props.name}</a>
+      <br />
+      {options === props.id ? <TaskOptions task={props} /> : ''}
+    </div>
+  );
 };
 
 const TaskOptions = ({ task }) => {
@@ -29,16 +23,19 @@ const TaskOptions = ({ task }) => {
   const handleEdit = () => {
     setEditMenu(!editMenu);
   };
+
+  const editItems = () => {
+    return (
+      <div id="edit-menu">
+        <img alt="obi" src={obi}></img>
+      </div>
+    );
+  };
+
   return (
     <div>
       <button onClick={handleEdit}>Edit</button>
-      {editMenu ? (
-        <div id="edit-menu">
-          <p>😀</p>
-        </div>
-      ) : (
-        ''
-      )}
+      {editMenu ? editItems() : ''}
     </div>
   );
 };

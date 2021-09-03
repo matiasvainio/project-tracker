@@ -14,12 +14,18 @@ const TaskList = () => {
     getTasks();
   }, []);
 
+  const tasksAsList = tasks.map((task) => {
+    return (
+      <li key={task.id}>
+        <Task props={task} />
+      </li>
+    );
+  });
+
   return (
     <div>
       <h1>Hello from the list of tasks!</h1>
-      <ul>
-        <Task tasks={tasks} />
-      </ul>
+      <ul>{tasksAsList}</ul>
     </div>
   );
 };
