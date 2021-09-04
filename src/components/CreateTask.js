@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { post } from '../services/api';
+import { create } from '../services/api';
 
 const CreateTask = () => {
   const [taskName, setTaskName] = useState('');
@@ -18,7 +18,7 @@ const CreateTask = () => {
       name: taskName,
       startDate: startDate,
     };
-    post(newTask);
+    create(newTask);
     document.getElementById('task-form').reset();
   };
 
