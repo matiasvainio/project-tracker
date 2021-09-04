@@ -7,9 +7,14 @@ const getAll = async () => {
   return response.data;
 };
 
-const post = async (task) => {
+const create = async (task) => {
   const response = await axios.post(url, task);
   return response.data;
 };
 
-export { getAll, post };
+const modify = async (task) => {
+  const response = await axios.put(`${url}/${task.id}`, task);
+  return response.data;
+};
+
+export { getAll, create, modify };
