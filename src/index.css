@@ -25,3 +25,10 @@ li:hover {
 a:hover {
   cursor: pointer;
 }
+
+#edit-menu {
+  background-color: pink;
+  width: 500px;
+  height: 400px;
+  position: absolute;
+}
